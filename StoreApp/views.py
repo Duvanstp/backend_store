@@ -69,6 +69,36 @@ class ProductViewSet(ModelViewSet):
     serializer_class = ProductSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
+    def update(self, request, *args, **kwargs):
+        # Hacer que la actualización sea parcial por defecto
+        partial = kwargs.pop('partial', True)
+        instance = self.get_object()  # Obtener la instancia a actualizar
+        datos = request.data.copy()  # Crear una copia de los datos enviados
+
+        # Eliminar campos vacíos del payload
+        if datos.get('image1') == '':
+            datos.pop('image1')
+        if datos.get('image2') == '':
+            datos.pop('image2')
+        if datos.get('image3') == '':
+            datos.pop('image3')
+        if datos.get('image4') == '':
+            datos.pop('image4')
+        if datos.get('image5') == '':
+            datos.pop('image5')
+        if datos.get('image6') == '':
+            datos.pop('image6')
+
+        # Serializar y validar los datos actualizados
+        serializer = self.get_serializer(instance, data=datos, partial=partial)
+        serializer.is_valid(raise_exception=True)
+
+        # Actualizar la instancia
+        self.perform_update(serializer)
+
+        # Retornar la instancia actualizada
+        return Response(serializer.data)
+
 
 # ViewSet para el modelo Invoice
 class InvoiceViewSet(ModelViewSet):

@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.hashers import make_password
 
+
 # Modelo de la empresa, incluye información general como nombre, dirección, teléfono, etc.
 class Company(models.Model):
     name = models.CharField(max_length=50)  # Razón social
@@ -63,11 +64,12 @@ class Product(models.Model):
     weight = models.PositiveIntegerField(help_text="Weight in grams", blank=True, null=True)  # Peso en gramos
     duration = models.PositiveIntegerField(help_text="Duration in hours", blank=True, null=True)  # Duración en horas
     materials = models.TextField(blank=True, null=True)  # Materiales del producto
-    image1 = models.ImageField(upload_to='products/', blank=True, null=True)  # Imagen 1
+    image1 = models.ImageField(upload_to='products/', blank=False, null=False)  # Imagen 1
     image2 = models.ImageField(upload_to='products/', blank=True, null=True)  # Imagen 2
     image3 = models.ImageField(upload_to='products/', blank=True, null=True)  # Imagen 3
     image4 = models.ImageField(upload_to='products/', blank=True, null=True)  # Imagen 4
     image5 = models.ImageField(upload_to='products/', blank=True, null=True)  # Imagen 5
+    image6 = models.ImageField(upload_to='products/', blank=True, null=True)  # Imagen 6
 
     def __str__(self):
         return self.name

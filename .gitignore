@@ -1,6 +1,15 @@
 # Python bytecode
 __pycache__/
 *.py[cod]
+*.pyc
+__migrations__/
+
+# Ignorar archivos de bases de datos SQLite
+db.sqlite3
+
+# Ignorar migraciones compiladas
+*.pyc
+*.pyo
 
 # Django migrations
 migrations/
@@ -22,9 +31,6 @@ Thumbs.db
 
 # Archivos de logs
 *.log
-
-# Archivos de bases de datos SQLite
-db.sqlite3
 
 # Archivos de test coverage
 htmlcov/

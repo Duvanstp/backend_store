@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.hashers import make_password
 from .models import Company, Employee, Client, Product, Invoice, InvoiceDetail, Inventory
-
+from drf_extra_fields.fields import Base64ImageField
 
 # Serializador para el modelo Company
 class CompanySerializer(serializers.ModelSerializer):
@@ -50,6 +50,14 @@ class ClientSerializer(serializers.ModelSerializer):
 
 # Serializador para el modelo Product
 class ProductSerializer(serializers.ModelSerializer):
+    # Campos de imágenes usando Base64ImageField
+    image1 = Base64ImageField(required=True)
+    image2 = Base64ImageField(required=False)
+    image3 = Base64ImageField(required=False)
+    image4 = Base64ImageField(required=False)
+    image5 = Base64ImageField(required=False)
+    image6 = Base64ImageField(required=False)
+
     class Meta:
         model = Product
         fields = '__all__'
