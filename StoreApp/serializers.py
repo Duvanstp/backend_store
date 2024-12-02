@@ -51,7 +51,7 @@ class ClientSerializer(serializers.ModelSerializer):
 # Serializador para el modelo Product
 class ProductSerializer(serializers.ModelSerializer):
     # Campos de imágenes usando Base64ImageField
-    image1 = Base64ImageField(required=True)
+    image1 = Base64ImageField(required=False)
     image2 = Base64ImageField(required=False)
     image3 = Base64ImageField(required=False)
     image4 = Base64ImageField(required=False)

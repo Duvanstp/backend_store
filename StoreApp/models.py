@@ -59,12 +59,13 @@ class Product(models.Model):
     stock = models.PositiveIntegerField()  # Cantidad en inventario
     color = models.CharField(max_length=50, blank=True, null=True)  # Color
     category = models.CharField(max_length=100, blank=True, null=True)  # Categoría
+    product_type = models.CharField(max_length=100, blank=True, null=True) # Categoria.
     fragrance = models.CharField(max_length=100, blank=True, null=True)  # Fragancia o aroma
     size = models.CharField(max_length=50, blank=True, null=True)  # Tamaño
     weight = models.PositiveIntegerField(help_text="Weight in grams", blank=True, null=True)  # Peso en gramos
     duration = models.PositiveIntegerField(help_text="Duration in hours", blank=True, null=True)  # Duración en horas
     materials = models.TextField(blank=True, null=True)  # Materiales del producto
-    image1 = models.ImageField(upload_to='products/', blank=False, null=False)  # Imagen 1
+    image1 = models.ImageField(upload_to='products/', blank=True, null=True)  # Imagen 1
     image2 = models.ImageField(upload_to='products/', blank=True, null=True)  # Imagen 2
     image3 = models.ImageField(upload_to='products/', blank=True, null=True)  # Imagen 3
     image4 = models.ImageField(upload_to='products/', blank=True, null=True)  # Imagen 4
