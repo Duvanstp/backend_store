@@ -5,7 +5,6 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
-# Importa tus ViewSets
 from StoreApp.views import (
     CompanyViewSet,
     EmployeeViewSet,
@@ -17,7 +16,6 @@ from StoreApp.views import (
     TokenProvider,
 )
 
-# Configuración del esquema de la API
 schema_view = get_schema_view(
     openapi.Info(
         title="Store API",
@@ -31,7 +29,6 @@ schema_view = get_schema_view(
     permission_classes=(permissions.AllowAny,),
 )
 
-# Configuración del router
 router = DefaultRouter()
 router.register(r'companies', CompanyViewSet, basename='company')
 router.register(r'employees', EmployeeViewSet, basename='employee')
@@ -41,7 +38,6 @@ router.register(r'invoices', InvoiceViewSet, basename='invoice')
 router.register(r'invoice-details', InvoiceDetailViewSet, basename='invoice-detail')
 router.register(r'inventories', InventoryViewSet, basename='inventory')
 
-# Configuración de las rutas
 urlpatterns = [
     path('admin/', admin.site.urls),  # Ruta para el panel de administración
     path('api/', include(router.urls)),  # Rutas de la API
